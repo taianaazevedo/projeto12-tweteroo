@@ -17,17 +17,17 @@ let tweets = []
 
 
 app.post("/sign-up", (req, res) => {
-    const { username, avatar} = req.body
+    const { username, avatar } = req.body
     const usuario = {
         username: username,
         avatar: avatar
     }
 
     if(!usuario.username || usuario.username === "" || typeof usuario.username !== 'string'){
-        return res.status(400).send('BAD REQUEST');
+        return res.status(400).send('BAD REQUEST')
     }
     if(!usuario.avatar || usuario.avatar === "" || typeof usuario.avatar !== 'string'){
-        return res.status(400).send('BAD REQUEST');
+        return res.status(400).send('BAD REQUEST')
     }
 
     usuarioLogado.push(usuario)
@@ -47,7 +47,7 @@ app.post("/tweets", (req, res) => {
         return res.send("UNAUTHORIZED")
     } 
     if(!tweetUsuario || tweetUsuario.tweet === "" || typeof tweetUsuario.tweet !== "string"){
-        return res.status(400).send('BAD REQUEST');
+        return res.status(400).send('BAD REQUEST')
     }
         tweets.push(tweetUsuario)
         res.status(201).send("OK")
@@ -55,7 +55,7 @@ app.post("/tweets", (req, res) => {
 })
 
 app.get("/tweets", (req, res) => {
-    const ultimosTweets = (tweets.length >= 10) ? tweets.slice(tweets.length - 10) : tweets;
+    const ultimosTweets = (tweets.length >= 10) ? tweets.slice(tweets.length - 10) : tweets
     res.send(ultimosTweets.reverse())
 })
 

@@ -22,6 +22,14 @@ app.post("/sign-up", (req, res) => {
         username: username,
         avatar: avatar
     }
+
+    if(!username || username === "" || typeof username !== string){
+        return res.status(400).send('BAD REQUEST');
+    }
+    if(!avatar || avatar === "" || typeof avatar !== string){
+        return res.status(400).send('BAD REQUEST');
+    }
+
     usuarioLogado.push(usuario)
 	res.status(201).send("OK")
 })

@@ -33,7 +33,7 @@ app.post("/tweets", (req, res) => {
     const tweetUsuario = {
         username: username,
         tweet: tweet,
-        avatar: avatarUsuario
+        avatar: [avatarUsuario]
     }
     if(!usuarioLogado.find((u) => u.username === username)){
         return res.send("UNAUTHORIZED")

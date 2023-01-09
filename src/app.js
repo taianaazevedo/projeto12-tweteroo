@@ -45,10 +45,13 @@ app.post("/tweets", (req, res) => {
     }
     if(!usuarioLogado.find((u) => u.username === username)){
         return res.send("UNAUTHORIZED")
-    } else {
+    } 
+    if(!tweetUsuario || tweetUsuario.tweet === "" || typeof tweetUsuario.tweet !== "string"){
+        return res.status(400).send('BAD REQUEST');
+    }
         tweets.push(tweetUsuario)
         res.status(201).send("OK")
-    }
+    
 })
 
 app.get("/tweets", (req, res) => {

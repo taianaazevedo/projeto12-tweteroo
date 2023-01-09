@@ -33,7 +33,7 @@ app.post("/tweets", (req, res) => {
     const tweetUsuario = {
         username: username,
         tweet: tweet,
-        avatar: [avatarUsuario]
+        avatar: avatarUsuario.toString()
     }
     if(!usuarioLogado.find((u) => u.username === username)){
         return res.send("UNAUTHORIZED")
@@ -45,7 +45,6 @@ app.post("/tweets", (req, res) => {
 
 app.get("/tweets", (req, res) => {
     const ultimosTweets = (tweets.length >= 10) ? tweets.slice(tweets.length - 10) : tweets;
-    // console.log(ultimosTweets.reverse())
     res.send(ultimosTweets.reverse())
 })
 

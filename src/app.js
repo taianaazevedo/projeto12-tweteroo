@@ -23,10 +23,10 @@ app.post("/sign-up", (req, res) => {
         avatar: avatar
     }
 
-    if(!username || username === "" || typeof username !== string){
+    if(!usuario.username || usuario.username === "" || typeof usuario.username !== 'string'){
         return res.status(400).send('BAD REQUEST');
     }
-    if(!avatar || avatar === "" || typeof avatar !== string){
+    if(!usuario.avatar || usuario.avatar === "" || typeof usuario.avatar !== 'string'){
         return res.status(400).send('BAD REQUEST');
     }
 

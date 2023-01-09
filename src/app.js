@@ -23,11 +23,11 @@ app.post("/sign-up", (req, res) => {
         avatar: avatar
     }
 
-    if(!usuario.username || usuario.username === "" || typeof usuario.username !== 'string'){
-        return res.status(400).send('BAD REQUEST')
+    if(!usuario.username || usuario.username === "" || typeof usuario.username !== "string"){
+        return res.status(400).send("Todos os campos são obrigatórios!")
     }
-    if(!usuario.avatar || usuario.avatar === "" || typeof usuario.avatar !== 'string'){
-        return res.status(400).send('BAD REQUEST')
+    if(!usuario.avatar || usuario.avatar === "" || typeof usuario.avatar !== "string"){
+        return res.status(400).send("Todos os campos são obrigatórios!")
     }
 
     usuarioLogado.push(usuario)
@@ -40,14 +40,14 @@ app.post("/tweets", (req, res) => {
 
     const tweetUsuario = {
         username: username,
-        tweet: tweet,
-        avatar: avatarUsuario.toString()
+        avatar: avatarUsuario.toString(),
+        tweet: tweet        
     }
     if(!usuarioLogado.find((u) => u.username === username)){
         return res.send("UNAUTHORIZED")
     } 
     if(!tweetUsuario || tweetUsuario.tweet === "" || typeof tweetUsuario.tweet !== "string"){
-        return res.status(400).send('BAD REQUEST')
+        return res.status(400).send("Todos os campos são obrigatórios!")
     }
         tweets.push(tweetUsuario)
         res.status(201).send("OK")

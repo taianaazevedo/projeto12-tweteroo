@@ -12,12 +12,7 @@ app.listen(PORT, () => {
     console.log(`Servidor rodando na porta: ${PORT}`)
 })
 
-let usuariosLogados = [
-    // {
-    // username: "dwight schrute",
-    // avatar: "https://www.looper.com/img/gallery/the-best-time-dwight-schrute-ever-broke-character-on-the-office/intro-1620063081.jpg"
-    // }
-]
+let usuariosLogados = []
 let tweets = []
 
 
@@ -27,8 +22,8 @@ app.post("/sign-up", (req, res) => {
         username: username,
         avatar: avatar
     }
-    usuariosLogados.push(usuario);
-	res.status(201).send("OK");
+    usuariosLogados.push(usuario)
+	res.status(201).send("OK")
 })
 
 app.post("/tweets", (req, res) => {
@@ -41,7 +36,7 @@ app.post("/tweets", (req, res) => {
         return res.send("UNAUTHORIZED")
     } else {
         tweets.push(tweetUsuario)
-        res.send("OK")
+        res.status(201).send("OK")
     }
 
 
